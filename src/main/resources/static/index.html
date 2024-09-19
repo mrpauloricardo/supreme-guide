@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estudos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">Sistema de Estudos</div>
+    <nav>
+        <button onclick="showLoginPage()">Login</button>
+        <button onclick="showRegisterPage()">Registro</button>
+    </nav>
+</header>
+
+<main id="welcome-page">
+    <h1>Bem-vindo ao Sistema de Estudos</h1>
+    <p>Organize seus estudos, gerencie suas matérias e acompanhe seu progresso de forma eficiente.</p>
+    <h2>Recursos:</h2>
+    <ul>
+        <li>Crie e gerencie matérias de estudo</li>
+        <li>Adicione tarefas e atividades para cada matéria</li>
+        <li>Faça comentários e anotações</li>
+    </ul>
+    <p>Faça login ou registre-se para começar a usar o sistema!</p>
+</main>
+
+<main id="project-management" style="display: none;">
+    <h1>Gerenciamento de Projetos</h1>
+
+    <h2>Seus Projetos</h2>
+    <div class="project-list" id="project-list">
+        <!-- Projetos serão adicionados aqui dinamicamente -->
+    </div>
+
+    <h2>Adicionar Novo Projeto</h2>
+    <form id="new-project-form">
+        <label for="project-title">Título do Projeto:</label>
+        <input type="text" id="project-title" required>
+
+        <label for="project-description">Descrição:</label>
+        <textarea id="project-description" rows="3" required></textarea>
+
+        <button type="submit">Criar Projeto</button>
+    </form>
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

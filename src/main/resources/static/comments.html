@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentários</title>
+    <link rel="stylesheet" href="css/commentStyles.css">
+</head>
+<body>
+<header>
+    <h1>Comentários</h1>
+</header>
+<main>
+    <section id="comments-section">
+        <h2>Comentários</h2>
+        <div id="comment-list">
+            <!-- Comentários serão adicionados aqui dinamicamente -->
+        </div>
+        <form id="comment-form">
+            <label for="subjectId">ID do Assunto:</label>
+            <input type="text" id="subjectId" required>
+
+            <label for="content">Comentário:</label>
+            <textarea id="content" rows="3" required></textarea>
+
+            <button type="submit">Adicionar Comentário</button>
+        </form>
+        <div id="message"></div>
+    </section>
+</main>
+<script src="js/commentScript.js"></script>
+</body>
+</html>

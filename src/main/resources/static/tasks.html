@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="css/subjectStyles.css">
+    <link rel="stylesheet" href="css/taskStyles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Gerenciar Tarefas</h2>
+    <form id="taskForm">
+        <label for="title">Título:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" required></textarea>
+
+        <label for="subjectId">ID da Matéria:</label>
+        <input type="text" id="subjectId" required>
+
+        <button type="submit">Criar Tarefa</button>
+    </form>
+
+    <div id="message"></div>
+
+    <div class="task-list" id="taskList">
+        <!-- Tarefas criadas vão aparecer aqui -->
+    </div>
+</div>
+
+<script src="js/taskScript.js"></script>
+</body>
+</html>

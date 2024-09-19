@@ -1,0 +1,30 @@
+/* Adicione ao styles.css existente ou crie um novo arquivo */
+
+.task-list {
+    margin-top: 2rem;
+}
+
+.task {
+    background-color: #2c2c2c;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.task h3 {
+    margin: 0;
+    color: #bb86fc;
+}
+
+.task p {
+    margin: 0.5rem 0;
+}
+
+.task small {
+    color: #999;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999;
+}

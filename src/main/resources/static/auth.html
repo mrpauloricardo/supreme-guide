@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/authStyles.css">
+</head>
+<body>
+<div class="container" id="loginContainer">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" required>
+        <label for="loginPassword">Senha:</label>
+        <input type="password" id="loginPassword" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <div class="switch">
+        Não tem uma conta? <a href="#" id="showRegister">Registre-se</a>
+    </div>
+    <div id="loginMessage"></div>
+</div>
+
+<div class="container" id="registerContainer" style="display: none;">
+    <h2>Registro</h2>
+    <form id="registerForm">
+        <label for="registerUsername">Nome de usuário:</label>
+        <input type="text" id="registerUsername" required>
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" required>
+        <label for="registerPassword">Senha:</label>
+        <input type="password" id="registerPassword" required>
+        <button type="submit">Registrar</button>
+    </form>
+    <div class="switch">
+        Já tem uma conta? <a href="#" id="showLogin">Faça login</a>
+    </div>
+    <div id="registerMessage"></div>
+</div>
+
+<script src="js/authScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Subjects</title>
+    <link rel="stylesheet" href="css/subjectStyles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Gerenciar Subjects</h2>
+    <form id="subjectForm">
+        <label for="title">Título:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" required></textarea>
+
+        <button type="submit">Criar Subject</button>
+    </form>
+
+    <div id="message"></div>
+
+    <div class="subject-list" id="subjectList">
+        <!-- Subjects criados vão aparecer aqui -->
+    </div>
+</div>
+
+<script src="js/subjectScript.js"></script>
+</body>
+</html>
