@@ -1,32 +1,28 @@
-# Etapa 1: Imagem base para compilar o projeto (Maven e JDK 22)
-FROM maven:3.9.5-eclipse-temurin-22 AS build
+# Use a imagem oficial do Maven com OpenJDK 17
+FROM maven:3.8.4-openjdk-17 AS build
 
-# Diretório de trabalho dentro do container
+# Definir o diretório de trabalho no container
 WORKDIR /app
 
-# Copiar o arquivo pom.xml e outros arquivos de configuração do Maven
+# Copiar o arquivo pom.xml
 COPY pom.xml .
 
-# Baixar as dependências do Maven (usando cache para otimizar builds)
-RUN mvn dependency:go-offline -B
-
-# Copiar o código-fonte para dentro do container
+# Copiar os arquivos fonte do projeto
 COPY src ./src
 
-# Compilar o projeto e criar o JAR
+# Compilar a aplicação
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagem base para executar o projeto (JDK 22)
-FROM eclipse-temurin:22-jre-alpine
+# Estágio final
+FROM openjdk:17-jdk-slim
 
-# Diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copiar o JAR gerado da etapa de build para a imagem final
+# Copiar o arquivo JAR do estágio de build
 COPY --from=build /app/target/*.jar app.jar
 
-# Expor a porta em que a aplicação será executada
+# Expor a porta que sua aplicação utiliza
 EXPOSE 8080
 
-# Comando para rodar a aplicação
+# Comando para executar a aplicação
 CMD ["java", "-jar", "app.jar"]

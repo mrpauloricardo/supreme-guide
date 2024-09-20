@@ -1,8 +1,12 @@
 package br.unifor.ead.management.controller;
 
 import br.unifor.ead.management.entity.Subject;
+import br.unifor.ead.management.entity.User;
 import br.unifor.ead.management.repository.SubjectRepository;
+import br.unifor.ead.management.repository.UserRepository;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +17,32 @@ import java.util.List;
 @RequestMapping("/subjects")
 public class SubjectController {
 
-    private final SubjectRepository subjectRepository;
+    @Autowired
+    private SubjectRepository subjectRepository;
 
-    public SubjectController(SubjectRepository subjectRepository) {
-        this.subjectRepository = subjectRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
-    // Listar os subjects do usuário autenticado
     @GetMapping
     public List<Subject> getSubjectsByUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userId = authentication.getName(); // Assumindo que o nome é o email ou ID único
-        return subjectRepository.findByUserId(userId);
+        String userEmail = authentication.getName();
+        User user = userRepository.findByEmail(userEmail);
+        return subjectRepository.findByCreator(user);
     }
 
-    // Criar um novo subject
     @PostMapping
-    public Subject createSubject(@Valid @RequestBody Subject subject) {
+    public ResponseEntity<?> createSubject(@Valid @RequestBody Subject subject) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userId = authentication.getName(); // Assumindo que o email ou username é usado como ID
-        subject.setUserId(userId); // Associa o Subject ao usuário logado
-        return subjectRepository.save(subject);
+        String userEmail = authentication.getName();
+        User user = userRepository.findByEmail(userEmail);
+        
+        if (user == null) {
+            return ResponseEntity.badRequest().body("User not found");
+        }
+        
+        subject.setCreator(user);
+        Subject savedSubject = subjectRepository.save(subject);
+        return ResponseEntity.ok(savedSubject);
     }
 }
-

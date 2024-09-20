@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Subjects</title>
-    <link rel="stylesheet" href="css/subjectStyles.css">
+    <title>Subjects</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container">
-    <h2>Gerenciar Subjects</h2>
-    <form id="subjectForm">
-        <label for="title">Título:</label>
-        <input type="text" id="title" required>
+    <header>
+        <h1>Subjects</h1>
+        <div class="user-info">
+            <span id="usernameDisplay">Usuário</span>
+            <button id="logoutButton">Logout</button>
+            <a href="index.html">Página Inicial</a>
+        </div>
+    </header>
 
-        <label for="description">Descrição:</label>
-        <textarea id="description" required></textarea>
+    <div class="container">
+        <aside>
+            <h2>Seus Subjects</h2>
+            <div id="sidebarSubjects"></div>
+        </aside>
 
-        <button type="submit">Criar Subject</button>
-    </form>
+        <main>
+            <h2>Todos os Subjects</h2>
+            <div id="subjectList"></div>
 
-    <div id="message"></div>
+            <form id="subjectForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" required>
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" required>
+                <button type="submit">Criar Subject</button>
+            </form>
 
-    <div class="subject-list" id="subjectList">
-        <!-- Subjects criados vão aparecer aqui -->
+            <div id="message"></div>
+        </main>
     </div>
-</div>
 
-<script src="js/subjectScript.js"></script>
+    <script src="js/subjectScript.js"></script>
 </body>
 </html>
