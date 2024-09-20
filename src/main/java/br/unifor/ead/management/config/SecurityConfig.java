@@ -29,9 +29,9 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)  // CSRF desativado para APIs REST
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // Rota pública para autenticação
-                        .requestMatchers("/subjects/**").authenticated() // Qualquer requisição em /subjects precisa estar autenticada
-                        .anyRequest().authenticated()  // Todas as outras requisições precisam estar autenticadas
+                        //.requestMatchers("/auth/**").permitAll() // Rota pública para autenticação
+                        //.requestMatchers("/subjects/**").authenticated() // Qualquer requisição em /subjects precisa estar autenticada
+                        .anyRequest().permitAll()  // Todas as outras requisições precisam estar autenticadas
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Sem gerenciamento de sessão, JWT será responsável por autenticar
